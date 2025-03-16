@@ -1,0 +1,14 @@
+{
+  "name": "chatbot-api",
+  "version": "1.0.0",
+  "main": "api/chatbot.js",
+  "scripts": {
+    "start": "node api/chatbot.js"
+  },
+  "dependencies": {
+    "@vercel/node": "^5.1.14",
+    "dotenv": "^16.4.7",
+    "openai": "^4.0.0"
+  },
+  "type": "module"
+}
