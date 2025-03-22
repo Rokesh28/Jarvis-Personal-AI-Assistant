@@ -16,13 +16,15 @@ export default async function handler(req, res) {
         const { message } = req.body;
 
         // Fetch JSON files directly from GitHub (Fixed URLs)
-        const projects = await fetch("https://raw.githubusercontent.com/Rokesh28/rokesh28.github.io/main/projects/projects.json").then(res => res.json());
-        const skills = await fetch("https://raw.githubusercontent.com/Rokesh28/rokesh28.github.io/main/skills.json").then(res => res.json());
+        const projects = await fetch("https://raw.githubusercontent.com/Rokesh28/rokesh28.github.io/refs/heads/main/projects/projects.json").then(res => res.json());
+        const skills = await fetch("https://raw.githubusercontent.com/Rokesh28/rokesh28.github.io/refs/heads/main/skills.json").then(res => res.json());
+        const experiences = await fetch("https://raw.githubusercontent.com/Rokesh28/rokesh28.github.io/refs/heads/main/workexperience.json").then(res => res.json());
+        const info = await fetch("https://raw.githubusercontent.com/Rokesh28/rokesh28.github.io/refs/heads/main/information.json").then(res => res.json());
 
-        let context = `Projects: ${JSON.stringify(projects)}, Skills: ${JSON.stringify(skills)}`;
+        let context = `Projects: ${JSON.stringify(projects)}, Skills: ${JSON.stringify(skills)}, workexperience: ${JSON.stringify(experiences)}, Information: ${JSON.stringify(info)}`;
 
         let chatHistory = [
-            { role: "system", content: `You are an AI assistant for Rokesh Prakash's website. Answer questions politely based on the following information:\n\n${context}` },
+            { role: "system", content: `You are an AI assistant for Rokesh Prakash's website and your name is Jarvis. Answer the questions very polite and respectful based on the following information:\n\n${context}` },
             { role: "user", content: message }
         ];
 
